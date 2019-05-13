@@ -1,0 +1,11 @@
+#!/bin/bash
+
+shopt -s nullglob
+
+for file in *
+do
+  if [[ $file == *.wav ]] || [[ $file == *.m4a ]]; then
+    ffmpeg -i "$file" "${file%\.*}.mp3"
+    rm "$file"
+  fi
+done
